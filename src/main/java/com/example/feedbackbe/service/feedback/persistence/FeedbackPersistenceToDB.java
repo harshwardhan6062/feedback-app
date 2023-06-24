@@ -1,8 +1,7 @@
 package com.example.feedbackbe.service.feedback.persistence;
 
-import com.example.feedbackbe.model.FeedbackRecord;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.repository.FeedbackDAO;
-import com.example.feedbackbe.repository.FeedbackDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

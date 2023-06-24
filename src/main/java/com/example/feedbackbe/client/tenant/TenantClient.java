@@ -37,6 +37,11 @@ public class TenantClient {
         }
     }
 
-    public List<Tenant> getAllTenants() { return tenantDataRetrievalService.getAllTenants(); }
+    public void printAllTenants() {
+        List<Tenant> tenants = tenantDataRetrievalService.getAllTenants();
+        for(Tenant tenant: tenants) {
+            System.out.println(tenant.toString());
+        }
+    }
 
 }

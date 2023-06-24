@@ -1,11 +1,13 @@
 package com.example.feedbackbe.service.feedback.handler;
 
-import com.example.feedbackbe.model.FeedbackRecord;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.Feedback;
 import com.example.feedbackbe.model.feedback.TwitterFeedback;
 import com.example.feedbackbe.model.feedback.metadata.TwitterFeedbackMetadata;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.PostFeedbackRecord;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.ReviewFeedbackRecord;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistence;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistenceToDB;
 import com.example.feedbackbe.service.platform.info.UserDataRetrievalService;
@@ -34,10 +36,9 @@ public class TwitterFeedbackService implements FeedbackHandler {
     }
 
     @Override
-    public FeedbackRecord processFeedback(Feedback feedback) {
+    public void processFeedback(Feedback feedback) {
         TwitterFeedback twitterFeedback = (TwitterFeedback) feedback;
-        TwitterFeedbackMetadata metadata = new TwitterFeedbackMetadata(twitterFeedback.getCountry(), twitterFeedback.getPost(), twitterFeedback.getImageURL(), twitterFeedback.getShares(), twitterFeedback.getLikes());
-        feedbackPersistenceService.saveFeedback(new FeedbackRecord(getUniqueFeedbackId(feedback), getTenantId(twitterFeedback.getUsername()), FeedbackType.POST, FeedbackSource.TWITTER, metadata ));
-        return null;
+        PostFeedbackRecord feedbackRecord = new PostFeedbackRecord(getUniqueFeedbackId(feedback), getTenantId(twitterFeedback.getUsername()), FeedbackType.POST, FeedbackSource.TWITTER, twitterFeedback.getPostContent(), twitterFeedback.getImageURL(), twitterFeedback.getLikes(), twitterFeedback.getShares(), twitterFeedback.getUsername(), twitterFeedback.getCreatedAt(), twitterFeedback.getReads());
+        feedbackPersistenceService.saveFeedback(feedbackRecord);
     }
 }

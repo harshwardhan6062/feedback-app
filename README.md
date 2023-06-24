@@ -12,7 +12,7 @@ Models:
 
 
 
-Services: 
+Services:
 
 1. DataPull Service Package: Services used for pulling and handling the data
 2. Feedback Service Package: Services used for handling and persisting data
@@ -59,6 +59,32 @@ How does our app:
    In our app, one tenant can have multiple platformIDs. That means, if a tenant says I want data from 2 different apps from
    playstore, we can simply create 2 different platformUsers with the same tenantID. Both of these platformUsers will have 
    app specific data (like appID, authKey etc), and so for the same tenant, we can store feedbacks from multiple sources of same type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zomato -> Tenant
+
+
 
 
 

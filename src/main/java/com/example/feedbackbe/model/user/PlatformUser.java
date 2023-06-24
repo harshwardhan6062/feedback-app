@@ -5,6 +5,11 @@ public abstract class PlatformUser {
 
     String tenantId;
 
+    public PlatformUser(String platformId, String tenantId) {
+        this.platformId = platformId;
+        this.tenantId = tenantId;
+    }
+
     public String getTenantId() {
         return tenantId;
     }

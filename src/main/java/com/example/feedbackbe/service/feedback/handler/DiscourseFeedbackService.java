@@ -1,11 +1,13 @@
 package com.example.feedbackbe.service.feedback.handler;
 
-import com.example.feedbackbe.model.FeedbackRecord;
+import com.example.feedbackbe.model.feedback.PlaystoreFeedback;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.DiscourseFeedback;
 import com.example.feedbackbe.model.feedback.Feedback;
 import com.example.feedbackbe.model.feedback.metadata.DiscourseFeedbackMetadata;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.PostFeedbackRecord;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistence;
 import com.example.feedbackbe.service.platform.info.UserDataRetrievalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,9 @@ public class DiscourseFeedbackService implements FeedbackHandler {
 
 
     @Override
-    public FeedbackRecord processFeedback(Feedback feedback) {
+    public void processFeedback(Feedback feedback) {
         DiscourseFeedback discourseFeedback = (DiscourseFeedback) feedback;
-        DiscourseFeedbackMetadata metadata = new DiscourseFeedbackMetadata(discourseFeedback.getName(), discourseFeedback.getUsername(), discourseFeedback.getAvatar_template(), discourseFeedback.getCreatedAt(), discourseFeedback.getCooked(), discourseFeedback.getReads(), discourseFeedback.getReaders_count(), discourseFeedback.getScore());
-        feedbackPersistence.saveFeedback(new FeedbackRecord(getUniqueFeedbackId(feedback), this.getTenantId(discourseFeedback.getUsername()), FeedbackType.CONVERSATION, FeedbackSource.DISCOURSE, metadata ));
-        return null;
+        PostFeedbackRecord postFeedbackRecord = new PostFeedbackRecord(getUniqueFeedbackId(feedback), getTenantId(discourseFeedback.getUsername()), FeedbackType.REVIEW, FeedbackSource.DISCOURSE, discourseFeedback.getContent(), discourseFeedback.getImageURL(), discourseFeedback.getLikes(), discourseFeedback.getShares(), discourseFeedback.getUsername(), discourseFeedback.getUsername(), discourseFeedback.getReads());
+        feedbackPersistence.saveFeedback(postFeedbackRecord);
     }
 }

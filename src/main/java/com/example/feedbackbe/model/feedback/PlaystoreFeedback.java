@@ -5,7 +5,6 @@ import lombok.Builder;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-@Builder
 public class PlaystoreFeedback extends Feedback {
 
     private String id;
@@ -14,13 +13,14 @@ public class PlaystoreFeedback extends Feedback {
 
     private String createdAt;
 
+    private String feedbackText;
+
     @Min(0)
     @Max(5)
     private int rating;
 
-    private String feedbackText;
+    private int likes;
 
-    private String appId;
 
     public String getCreatedAt() {
         return createdAt;
@@ -38,15 +38,16 @@ public class PlaystoreFeedback extends Feedback {
         return feedbackText;
     }
 
-    public String getAppId() {
-        return appId;
-    }
 
     public double getAppVersion() {
         return appVersion;
     }
 
     private double appVersion;
+
+    public int getLikes() {
+        return this.likes;
+    }
 
     public String getUsername() {
         return this.username;

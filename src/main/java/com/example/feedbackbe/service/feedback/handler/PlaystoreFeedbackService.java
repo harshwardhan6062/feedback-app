@@ -1,11 +1,13 @@
 package com.example.feedbackbe.service.feedback.handler;
 
-import com.example.feedbackbe.model.FeedbackRecord;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.Feedback;
 import com.example.feedbackbe.model.feedback.PlaystoreFeedback;
 import com.example.feedbackbe.model.feedback.metadata.PlaystoreFeedbackMetadata;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.PostFeedbackRecord;
+import com.example.feedbackbe.model.user.FeedbackTypeRecord.ReviewFeedbackRecord;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistence;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistenceToDB;
 import com.example.feedbackbe.service.platform.info.UserDataRetrievalService;
@@ -29,11 +31,10 @@ public class PlaystoreFeedbackService implements FeedbackHandler {
     }
 
     @Override
-    public FeedbackRecord processFeedback(Feedback feedback) {
+    public void processFeedback(Feedback feedback) {
         PlaystoreFeedback playstoreFeedback = (PlaystoreFeedback) feedback;
-        PlaystoreFeedbackMetadata metadata = new PlaystoreFeedbackMetadata(playstoreFeedback.getRating(), playstoreFeedback.getFeedbackText(), playstoreFeedback.getAppId(), playstoreFeedback.getAppVersion(), playstoreFeedback.getUsername());
-        feedbackPersistenceService.saveFeedback(new FeedbackRecord(getUniqueFeedbackId(feedback), getTenantId(playstoreFeedback.getUsername()), FeedbackType.RATING, FeedbackSource.PLAYSTORE, metadata ));
-        return null;
+        ReviewFeedbackRecord reviewFeedbackRecord = new ReviewFeedbackRecord(getUniqueFeedbackId(feedback), getTenantId(playstoreFeedback.getUsername()), FeedbackType.REVIEW, FeedbackSource.PLAYSTORE, playstoreFeedback.getUsername(), playstoreFeedback.getFeedbackText(), playstoreFeedback.getLikes());
+        feedbackPersistenceService.saveFeedback(reviewFeedbackRecord);
     }
 
     public String getUniqueFeedbackId(Feedback feedback) {

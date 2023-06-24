@@ -17,6 +17,33 @@ public class TwitterFeedback extends Feedback {
     private int likes;
     private int shares;
 
+    public String getPostContent() {
+        return postContent;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public int getShares() {
+        return shares;
+    }
+
+    public int getReads() {
+        return reads;
+    }
+
+    private String feedbackText;
+
+    private String appId;
+    private String postContent;
+
+    private int reads;
+
     public TwitterFeedback(String country,
                            String username,
                            String createdAt,
@@ -56,16 +83,5 @@ public class TwitterFeedback extends Feedback {
         return this.post;
     }
 
-    public String getImageURL() {
-        return this.imageURL;
-    }
-
-    public int getLikes() {
-        return this.likes;
-    }
-
-    public int getShares() {
-        return this.shares;
-    }
 
 }

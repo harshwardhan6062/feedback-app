@@ -1,5 +1,7 @@
-package com.example.feedbackbe.model;
+package com.example.feedbackbe.model.user.FeedbackTypeRecord;
 
+import com.example.feedbackbe.model.FeedbackSource;
+import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.DiscourseFeedback;
 import com.example.feedbackbe.model.feedback.metadata.FeedbackMetaData;
 
@@ -10,14 +12,12 @@ public class FeedbackRecord {
     private FeedbackType feedbackType;
     private FeedbackSource feedbackSource;
 
-    private FeedbackMetaData metadata;
 
-    public FeedbackRecord(String feedbackID, String tenantId, FeedbackType feedbackType, FeedbackSource feedbackSource, FeedbackMetaData metadata) {
+    public FeedbackRecord(String feedbackID, String tenantId, FeedbackType feedbackType, FeedbackSource feedbackSource) {
         this.feedbackID = feedbackID;
         this.tenantId = tenantId;
         this.feedbackType = feedbackType;
         this.feedbackSource = feedbackSource;
-        this.metadata = metadata;
     }
 
     public String getFeedbackID() {

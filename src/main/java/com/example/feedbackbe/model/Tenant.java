@@ -13,6 +13,15 @@ public class Tenant {
         return email;
     }
 
+    @Override
+    public String toString() {
+        return "Tenant{" +
+                "tenantId='" + tenantId + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
     public Tenant(String tenantId, String name, String email) {
         this.tenantId = tenantId;
         this.name = name;

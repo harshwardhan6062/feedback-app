@@ -3,14 +3,20 @@ package com.example.feedbackbe.utils;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.Feedback;
 import com.example.feedbackbe.model.feedback.TwitterFeedback;
+import com.example.feedbackbe.model.user.PlatformUser;
+import com.example.feedbackbe.model.user.TwitterUser;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
-public class TwitterUtils {
+// These is just a helper file and can be ignored
+@Service
+public class TwitterUtils implements PlatformUtils{
 
-    public Feedback generateFeedback() {
-        return new TwitterFeedback("en", "ha_w_k", new Date().toString(), UUID.randomUUID().toString(),"Twitter is a cool platform @Elon Must", "", 3, 3);
+    public List<Feedback> generateFeedback(PlatformUser platformUser) {
+        return null;
     }
 
 }
