@@ -1,9 +1,8 @@
-package com.example.feedbackbe.model.user.FeedbackTypeRecord;
+package com.example.feedbackbe.model.feedback.FeedbackTypeRecord;
 
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.DiscourseFeedback;
-import com.example.feedbackbe.model.feedback.metadata.FeedbackMetaData;
 
 public class FeedbackRecord {
 

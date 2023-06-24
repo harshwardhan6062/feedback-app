@@ -1,6 +1,6 @@
 package com.example.feedbackbe.repository;
 
-import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
+import com.example.feedbackbe.model.feedback.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 

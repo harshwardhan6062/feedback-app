@@ -63,26 +63,10 @@ How does our app:
 
 
 
+Changes Integrated:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Zomato -> Tenant
+1. I have removed pullFeedbackAndHandle for each source and replaced it with a common handler class.
+2. I have created 2 type of feedback records: ReviewFeedbackRecord and PostFeedbackRecord (Considering there are only two feedback types for now: REVIEW and POST)
 
 
 

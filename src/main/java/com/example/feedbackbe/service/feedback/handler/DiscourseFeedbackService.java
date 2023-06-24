@@ -1,13 +1,10 @@
 package com.example.feedbackbe.service.feedback.handler;
 
-import com.example.feedbackbe.model.feedback.PlaystoreFeedback;
-import com.example.feedbackbe.model.user.FeedbackTypeRecord.FeedbackRecord;
 import com.example.feedbackbe.model.FeedbackSource;
 import com.example.feedbackbe.model.FeedbackType;
 import com.example.feedbackbe.model.feedback.DiscourseFeedback;
 import com.example.feedbackbe.model.feedback.Feedback;
-import com.example.feedbackbe.model.feedback.metadata.DiscourseFeedbackMetadata;
-import com.example.feedbackbe.model.user.FeedbackTypeRecord.PostFeedbackRecord;
+import com.example.feedbackbe.model.feedback.FeedbackTypeRecord.PostFeedbackRecord;
 import com.example.feedbackbe.service.feedback.persistence.FeedbackPersistence;
 import com.example.feedbackbe.service.platform.info.UserDataRetrievalService;
 import org.springframework.beans.factory.annotation.Autowired;
